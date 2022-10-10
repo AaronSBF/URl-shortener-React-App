@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Button from "../button/Button";
 import shortenCSS from "./shortenCSS.module.css";
 import LinkItem from "./LinkItem";
@@ -12,7 +12,7 @@ const Shorten = () => {
   const inputRef = useRef(); //variable to hold reference to input element
 
 
-  useEffect(() => {
+  /*useEffect(() => {
     const localState = JSON.parse(localStorage.getItem("savedShortenedLinks"));
     if (countItems === 0 && localState !== null) {
       setShortenLinks(localState);
@@ -24,7 +24,7 @@ const Shorten = () => {
       );
     }
   }, [shortenLinks]);
-
+*/
 
   //function to get the links from API
   const getShortenLink = async (url) => {
