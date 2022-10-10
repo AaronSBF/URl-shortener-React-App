@@ -11,7 +11,7 @@ export const Header = () => {
     setIsVisible((prev) => !prev);
   };
 
-  render(
+  return (
     <header className={headerStyles.header}>
       <div className="container row">
         <div className={`row ${headerStyles.header__icons}`}>
