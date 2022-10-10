@@ -1,7 +1,7 @@
 import { useState } from "react";
 //import { render } from "react-dom";
 import logo from "../../images/logo.svg";
-import headerStyles from "./Header.css";
+import headerStyles from "./Header.module.css";
 import Button from "../button/Button";
 
 export const Header = () => {

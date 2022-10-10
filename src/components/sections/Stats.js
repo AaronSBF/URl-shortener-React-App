@@ -1,7 +1,7 @@
 import brandRec from "../../images/icon-brand-recognition.svg";
 import detailedRecords from "../../images/icon-detailed-records.svg";
 import fullyCustom from "../../images/icon-fully-customizable.svg";
-import statsCSS from "./statsCSS.css";
+import statsCSS from "./statsCSS.module.css";
 
 const Stats = () => {
   return (

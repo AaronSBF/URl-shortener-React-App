@@ -1,10 +1,10 @@
 import Button from "../button/Button";
-import heroStyle from "./heroCSS.css";
+import heroStyle from "./heroCSS.module.css";
 
 const Hero = () => {
   return (
     <section className={heroStyle.hero}>
-      <div>
+      <div className="container row">
         <div className={heroStyle.hero__img}></div>
 
         <div className={heroStyle.hero__text}>

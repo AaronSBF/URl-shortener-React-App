@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import shortenCSS from "./shortenCSS.css";
+import shortenCSS from "./shortenCSS.module.css";
 import Button from "../button/Button";
 //functional components to handle the copy funcitonality
 
 const LinkItem = (props) => {
   const [copied, setCopied] = useState(false);
 
-  let link = props.linData;
+  let link = props.linkData;
 
   const copyHandler = (selectedLink, linkID) => {
     navigator.clipboard

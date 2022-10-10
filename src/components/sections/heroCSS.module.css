@@ -20,6 +20,7 @@
 
 @media (min-width: 900px) {
   .hero > div {
+    
     flex-direction: row-reverse;
     width: 90%;
     transform: translateX(5.5%);

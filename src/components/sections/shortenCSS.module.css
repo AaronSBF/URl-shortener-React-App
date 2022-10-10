@@ -114,7 +114,7 @@
 
 .shorten__search__input:focus {
   outline: none;
-  box-shadow: 0 0 0.25rem 0.25rem var(--clr-cyan);
+  box-shadow: 0 0 0.25rem 0.25rem var(--clr-red);
 }
 
 .shorten__serach__input__error::placeholder {

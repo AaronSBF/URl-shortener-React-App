@@ -2,7 +2,7 @@ import Hero from "../sections/Hero";
 import Shorten from "../sections/ShortenSection";
 import Stats from "../sections/Stats";
 import Boost from "../sections/Boost";
-import MainCSS from "./MainCSS.css";
+import MainCSS from "./MainCSS.module.css";
 
 const Main = () => {
   return (

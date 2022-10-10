@@ -1,5 +1,5 @@
 import Button from "../button/Button";
-import boostStyles from "./boostCSS.css";
+import boostStyles from "./boostCSS.module.css";
 
 const Boost = () => {
   return (

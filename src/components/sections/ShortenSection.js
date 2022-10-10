@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "../button/Button";
-import shortenCSS from "./shortenCSS.css";
+import shortenCSS from "./shortenCSS.module.css";
 import LinkItem from "./LinkItem";
 
 let countItems = 0; //variable to help with logic on number of links gotten
@@ -11,6 +11,21 @@ const Shorten = () => {
   const [linkErrorMessage, setLinkErrorMessage] = useState("");
   const inputRef = useRef(); //variable to hold reference to input element
 
+
+  /*useEffect(() => {
+    const localState = JSON.parse(localStorage.getItem("savedShortenedLinks"));
+    if (countItems === 0 && localState !== null) {
+      setShortenLinks(localState);
+      countItems = localState.length;
+    } else {
+      localStorage.setItem(
+        "savedShortenedLinks",
+        JSON.stringify(shortenLinks)
+      );
+    }
+  }, [shortenLinks]);
+*/
+
   //function to get the links from API
   const getShortenLink = async (url) => {
     setIsLoading(true);
@@ -20,7 +35,7 @@ const Shorten = () => {
         `https://api.shrtco.de/v2/shorten?url=${url}`
       );
 
-      if (response.ok) {
+      if (!response.ok) {
         throw new Error("Please add a valid link");
       }
 
@@ -30,16 +45,18 @@ const Shorten = () => {
       const link = {
         id: countItems,
         fullLink: data.result.original_link,
-        shortenLink: data.result.short_link,
+        shortenLink: data.result.short_link
       };
 
       setShortenLinks((prev) => [...prev, link]);
       setIsLoading(false);
-      countItems++;
+      ++countItems;
       setLinkErrorMessage("");
     } catch (error) {
       setLinkErrorMessage(error.message);
       inputRef.current.focus();
+    }finally{ 
+      setIsLoading(false);
     }
   };
 
@@ -78,8 +95,8 @@ const Shorten = () => {
             <Button
               type="submit"
               className={shortenCSS.shorten__btn}
-              onClick={() => linkEventHandler}
-            ></Button>
+              onClick={linkEventHandler}
+            >Shorten It!</Button>
           </form>
         </div>
       </section>
@@ -87,7 +104,7 @@ const Shorten = () => {
       {(shortenLinks.length !== 0 || isLoading) && (
         <section className={shortenCSS.result}>
           <div className="container center">
-            <u className={`row ${shortenCSS.result__list}`}>
+            <ul className={`row ${shortenCSS.result__list}`}>
               {isLoading && (
                 <li
                   className={`row ${shortenCSS.result__list__items} ${shortenCSS.loader}`}
@@ -96,13 +113,13 @@ const Shorten = () => {
                 </li>
               )}
 
-              {setShortenLinks
+              {shortenLinks
                 .slice(0)
                 .reverse()
                 .map((link) => (
                   <LinkItem key={link.id} linkData={link} />
                 ))}
-            </u>
+            </ul>
           </div>
         </section>
       )}
