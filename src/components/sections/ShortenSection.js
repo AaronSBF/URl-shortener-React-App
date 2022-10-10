@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import Button from "../button/Button";
 import shortenCSS from "./shortenCSS.css";
-import linkItem from "./LinkItem";
+import LinkItem from "./LinkItem";
 
 let countItems = 0; //variable to help with logic on number of links gotten
 
@@ -26,7 +26,7 @@ const Shorten = () => {
 
       const data = await response.json();
 
-      //created an object to hold the data from json 
+      //created an object to hold the data from json
       const link = {
         id: countItems,
         fullLink: data.result.original_link,
@@ -47,11 +47,11 @@ const Shorten = () => {
   const linkEventHandler = (event) => {
     event.preventDefault();
 
-    enteredLink = inputRef.current.value.trim().toLowerCase();
+    let enteredLink = inputRef.current.value.trim().toLowerCase();
 
     if (enteredLink.length === 0) {
       setLinkErrorMessage("Please type a link");
-      inputRef.current.focus;
+      inputRef.current.focus();
       return;
     }
 
@@ -100,7 +100,7 @@ const Shorten = () => {
                 .slice(0)
                 .reverse()
                 .map((link) => (
-                  <linkItem key={link.id} linkData={link} />
+                  <LinkItem key={link.id} linkData={link} />
                 ))}
             </u>
           </div>
